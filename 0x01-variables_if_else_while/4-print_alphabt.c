@@ -1,6 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 
 /**
  * main -this code prints alphabets except e and q
@@ -11,15 +9,11 @@
 int main(void)
 
 {
-char low, e, q;
+char i;
 
-e = 'e';
-q = 'q';
-for ((low = 'a') ; (low = 'z') ; low++)
-{
-if (low != e && low != q) 
-putchar(low);
-}	
+for (i = 'a'; i <= 'z'; i++)
+if (i != 'e' && i != 'q')
+putchar(i);
 putchar('\n');
-return (0);	
-}	
+return (0);
+}
