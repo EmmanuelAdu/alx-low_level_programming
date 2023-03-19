@@ -1,18 +1,16 @@
 #include <stdio.h>
 
 /**
- * main - this function prints numbers from 0 to 9
+ * main - this prints numbers from 0-9
  *
- * Return: always when done
+ * Return: always when success
  */
-
 int main(void)
 {
 	int e;
 
-	for (e = 0 ; e <= 9 ; e++)
-	putchar(e);
-putchar('\n');
-return (0);
+	for (e = 0 ; e < 10 ; e++)
+		printf("%d" , e);
+	printf("\n");
+	return (0);
 }
-
