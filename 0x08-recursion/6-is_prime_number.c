@@ -14,9 +14,12 @@ int a;
 if (n <= 1)
 return 0;
 
-while ((a = 2) || a * a <= n)
-a++;
+a = 2;
 if (n % a == 0)
 return 0;
-else return 1;
+a++;
+if (n % 5 == 0)
+return 0;
+else
+return 1;
 }
