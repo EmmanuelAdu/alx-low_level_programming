@@ -12,17 +12,11 @@ int is_prime_number(int n)
 int a;
 
 if (n <= 1)
-{
 return 0;
-}
 
 while ((a = 2) || a * a <= n)
 a++;
-{
 if (n % a == 0)
-{
 return 0;
-}
-}
-return 1;
+else return 1;
 }
