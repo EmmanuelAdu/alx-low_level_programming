@@ -4,7 +4,8 @@
 /**
  * is_prime_number - this function returns 1 if number is prime
  * otherwise returns 0
- * @n - is the number to check
+ * @n: is the number to check
+ * Return: 0 on success
  */
 
 int is_prime_number(int n)
