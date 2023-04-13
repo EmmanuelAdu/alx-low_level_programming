@@ -1,11 +1,11 @@
 #include "main.h"
-
- /**
- * *_strcat  -  concatenates two strings
+/**
+ * _strcat - this function concatenates two strings
+ *using at most n bytes from src
  * @dest: input value
  * @src: input value
  *
- * Return: dest
+ * Return: void
  */
 
 char *_strcat(char *dest, char *src)  /** _strcat - concatenates two strings */
