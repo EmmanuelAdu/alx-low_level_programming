@@ -9,10 +9,10 @@
  * Return: 0 when n == 0
  * or else (sum)
  */
-int sum;
-unsigned int p;
 int sum_them_all(const unsigned int n, ...)
 {
+	unsigned int sum = 0;
+	unsigned int p;
 	va_list num_add;
 
 	if (n == 0)
