@@ -30,11 +30,9 @@ void print_strings(const char *separator, const unsigned int n, ...)
 		else
 			printf("%s", str);
 		if (separator != NULL && p != (n - 1))
-		{
 			printf("%s", separator);
-		}
-		else
-			printf("\n");
 	}
+	printf("\n");
+
 	va_end(string);
 }
