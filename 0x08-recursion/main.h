@@ -5,6 +5,7 @@
  * FILE: main.h  this is a file containing the prototypes of the directory
  */
 
+int is_palindrome_recursive(char *s, int begin, int end);
 int is_divisible(int a, int is_div);
 int _search_sqrt(int a, int root);
 int _putchar(char c);
