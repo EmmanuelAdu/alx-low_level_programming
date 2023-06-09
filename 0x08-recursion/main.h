@@ -4,7 +4,7 @@
 /**
  * FILE: main.h  this is a file containing the prototypes of the directory
  */
-
+int _search_sqrt(int a, int root);
 int _putchar(char c);
 void _puts_recursion(char *s);
 void _print_rev_recursion(char *s);
