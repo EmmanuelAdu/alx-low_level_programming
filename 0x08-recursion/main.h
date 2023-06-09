@@ -4,6 +4,8 @@
 /**
  * FILE: main.h  this is a file containing the prototypes of the directory
  */
+
+int is_divisible(int a, int is_div);
 int _search_sqrt(int a, int root);
 int _putchar(char c);
 void _puts_recursion(char *s);
