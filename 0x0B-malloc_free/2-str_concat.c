@@ -18,10 +18,12 @@ char *str_concat(char *s1, char *s2)
 	int a; /* first iteration to first string */
 	int b; /* second iteration to second string */
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	if (s1 == NULL)
-		return (NULL);
+		s1 = "";
 	if (s2 == NULL)
-		return (NULL);
+		s2 = "";
 
 	for (a = 0; s1[a] != '\0';)
 	{
