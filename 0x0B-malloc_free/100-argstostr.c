@@ -1,17 +1,18 @@
 #include "main.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
- *argstostr - main entry
- *@ac: int input
+ *argstostr - name of function to concatenates all arguments
+ *@ac: size or number of arguments
  *@av: double pointer array
- *Return: 0
+ *Return: pointer to argument
  */
 
 char *argstostr(int ac, char **av)
 {
 int i, n, r = 0, l = 0;
-char *str;
+char *str; /* serves as a pointer to the current argument */
 
 if (ac == 0 || av == NULL)
 return (NULL);
