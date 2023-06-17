@@ -17,8 +17,8 @@ void *_malloc(unsigned int old_size)
 
 	if (ptr == NULL)
 		return (NULL);
-	return (ptr);
 	free(ptr);
+	return (ptr);
 }
 
 /**
@@ -34,7 +34,6 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	void *tempPtr; /* temp pointer to newly allocated memory */
 
 	ptr = _malloc(old_size); /* calling old function */
-
 	if (new_size == old_size)
 		return (ptr);
 	if (new_size == 0 && ptr != NULL)
@@ -44,10 +43,10 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 
 	if (tempPtr == NULL)
 	{
-		return (NULL);
 		free(tempPtr);
+		return (NULL);
 	}
 	memcpy(tempPtr, ptr, new_size);
-	return (tempPtr);
 	free(tempPtr);
+	return (tempPtr);
 }
