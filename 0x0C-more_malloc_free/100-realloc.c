@@ -4,24 +4,6 @@
 #include "main.h"
 
 /**
- * _malloc - this function that allocates memory to an ptr
- * @old_size: the size or number of bytes for memory allocation
- * Return: pointer to allocated memory
- */
-
-void *_malloc(unsigned int old_size)
-{
-	void *ptr; /* pointer to old memory size */
-
-	ptr = malloc(sizeof(int) * old_size);
-
-	if (ptr == NULL)
-		return (NULL);
-	free(ptr);
-	return (ptr);
-}
-
-/**
  * _realloc - this function reallocates memory to a new size
  * @ptr: pointer to old memory allocation
  * @old_size: the old memory allocation size
@@ -33,20 +15,34 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *tempPtr; /* temp pointer to newly allocated memory */
 
-	ptr = _malloc(old_size); /* calling old function */
 	if (new_size == old_size)
 		return (ptr);
 	if (new_size == 0 && ptr != NULL)
+	{
+		free(ptr);
 		return (NULL);
+	}
+	if (!ptr)
+		return (malloc(new_size));
 
-	tempPtr = malloc(sizeof(int) * new_size); /* creating memory */
+	tempPtr = malloc(new_size); /* creating memory */
 
 	if (tempPtr == NULL)
 	{
-		free(tempPtr);
 		return (NULL);
 	}
-	memcpy(tempPtr, ptr, new_size);
-	free(tempPtr);
+
+	/*
+	 * checks if new_size is less than old_size and copies only the
+	 * amount of ptr bytes that can contain into new_size bytes
+	 * else copies entire old_size bytes to tempPtr
+	 */
+
+	if (new_size < old_size)
+		memcpy(tempPtr, ptr, new_size);
+	else
+		memcpy(tempPtr, ptr, old_size);
+
+	free(ptr);
 	return (tempPtr);
 }
