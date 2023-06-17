@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	int b; /* will be assigned to argv2 */
 	int x; /* first/outer iteration over the two argc strings */
 	int y; /* inner/second iteration over the indivi char in the string */
+	int result;
 
 	if (argc != 3)
 	{
@@ -30,17 +31,16 @@ int main(int argc, char *argv[])
 		for (y = 0; argv[x][y] != '\0'; y++)
 		{
 			if (!isdigit(argv[x][y]))
-					{
-					printf("Error\n");
-					exit(98);
-					}
+			{
+				printf("Error\n");
+				exit(98);
+			}
 		}
 	}
 
 	/* assigning a and b to argv */
 	a = atoi(argv[1]);
 	b = atoi(argv[2]);
-
 	/* checking if all positive */
 	if (a < 0 || b < 0)
 	{
@@ -49,8 +49,8 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		int result = a * b;
+		result = a * b;
 		printf("%d\n", result);
-		return (0);
 	}
+	return (0);
 }
