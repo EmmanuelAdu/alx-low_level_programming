@@ -20,6 +20,33 @@ int _strlen(char *s)
 	return (len);
 }
 
+
+/**
+ * _strcpy - this function copies content from src to dest
+ * @dest: pointer to copy into
+ * @src: pointer to copy from
+ * Return: copied content i.e dest
+ */
+
+char *_strcpy(char *dest, char *src)
+{
+	int len = 0;
+	int i;
+
+	if (src[len] != '\0')
+	{
+		len++;
+	}
+	for (i = 0; i < len; i++)
+	{
+		dest[i] = src[i];
+	}
+	dest[i] = '\0';
+
+	return (dest);
+}
+
+
 /**
  * new_dog - this function creates a new dog
  * @name: name of the dog
@@ -54,8 +81,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(ptr->name);
 		return (NULL);
 	}
-	strcpy(ptr->name, name);
-	strcpy(ptr->owner, owner);
+	_strcpy(ptr->name, name);
+	_strcpy(ptr->owner, owner);
 
 	ptr->age = age;
 
