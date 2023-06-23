@@ -6,6 +6,7 @@
  * print_numbers - this function prints numbers
  * @separator: this is the string to be printed between numbers
  * @n: number of arguments passed to function
+ * @...: a variable number of numbers to be printed
  * Return: nothing
  */
 
@@ -15,8 +16,6 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 
 	unsigned int r;
 
-	if (n == 0)
-		return;
 	va_start(print_nmb, n);
 
 	for (r = 0; r < n; r++)
