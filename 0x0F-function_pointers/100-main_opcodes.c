@@ -30,8 +30,12 @@ int main(int argc, char *argv[])
 	}
 	for (i = 0; i < number_of_bytes; i++)
 	{
-		printf("%02x ", ptr[i]);
+		if (i == number_of_bytes -1)
+		{
+			printf("%02hhx\n", ptr[i]);
+			break;
+		}
+		printf("%02hhx ", ptr[i]);
 	}
-	printf("\n");
 	return (0);
 }
