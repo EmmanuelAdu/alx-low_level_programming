@@ -27,6 +27,10 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 	for (l = 0; ptr && l < index; l++)
 	{
+		if (!ptr || !ptr->next)
+		{
+			return (-1);
+		}
 		if (l == (index - 1))
 		{
 			more_ptr = ptr->next;
