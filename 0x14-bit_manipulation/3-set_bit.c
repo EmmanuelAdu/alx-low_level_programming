@@ -18,6 +18,6 @@ int set_bit(unsigned long int *n, unsigned int index)
 	 * this set the bit at the givien index to 1
 	 * using the OR operator after the right shift operator is done performing
 	 */
-	*n |= (1UL  << index);
+	*n = ((1UL  << index) | *n);
 	return (-1);
 }
