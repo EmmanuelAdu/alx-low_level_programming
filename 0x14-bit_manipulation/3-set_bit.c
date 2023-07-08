@@ -10,10 +10,6 @@
 
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	if (index > 63)
-	{
-		return (-1);
-	}
 	/**
 	 * this set the bit at the givien index to 1
 	 * using the OR operator after the right shift operator is done performing
