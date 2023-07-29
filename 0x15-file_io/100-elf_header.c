@@ -1,28 +1,56 @@
-#include <elf.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+#include "main.h"
 
-void magic_pr(unsigned char *e_ident);
-void data_p(unsigned char *e_ident);
-void version_p(unsigned char *e_ident);
-void abi_p(unsigned char *e_ident);
-void class_pr(unsigned char *e_ident);
-void osabi_p(unsigned char *e_ident);
-void type_p(unsigned int e_type, unsigned char *e_ident);
-void entry_p(unsigned long int e_entry, unsigned char *e_ident);
-void close_elf(int elf);
-void elf_check(unsigned char *e_ident);
+/**
+ *data_p - the data of an ELF header
+ *@e_ident: A pointer to an array containing the elf class
+ */
+void data_p(unsigned char *e_ident)
+{
+	printf(" Data: ");
+	switch (e_ident[EI_DATA])
+	{
+		case ELFDATANONE:
+			printf("none\n");
+			break;
+		case ELFDATA2LSB:
+			printf("2's complement, little endian\n");
+			break;
+		case ELFDATA2MSB:
+			printf("2's complement, big endian\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
+
+/**
+ *class_pr - this function checks the class of an ELF header
+ *@e_ident: A pointer to an array containing the ELF class
+ */
+void class_pr(unsigned char *e_ident)
+{
+	printf(" Class: ");
+	switch (e_ident[EI_CLASS])
+	{
+		case ELFCLASSNONE:
+			printf("none\n");
+			break;
+		case ELFCLASS32:
+			printf("ELF32\n");
+			break;
+		case ELFCLASS64:
+			printf("ELF64\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
+	}
+}
 
 /**
  *close_elf - Closes an ELF file.
  *@elf: The file descriptor of the ELF file.
  *Description: If the file cannot be closed - exit code 98.
  */
-
 void close_elf(int elf)
 {
 	if (close(elf) == -1)
@@ -49,23 +77,19 @@ void elf_check(unsigned char *e_ident)
 				e_ident[ptr] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
-			exit(98);
+				exit(98);
 		}
 	}
 }
-
 
 /**
  *abi_p - prints the ABI version of an ELF header
  *@e_ident: pointer to an array containing elF ABI version
  */
-
 void abi_p(unsigned char *e_ident)
 {
-	printf(" ABI Version: %d\n"
-			e_ident[EI_ABIVERSION]);
+	printf(" ABI Version: %d\n", e_ident[EI_ABIVERSION]);
 }
-
 
 /**
  *magic_pr - this function the magic numbers of an ELF header
@@ -88,55 +112,6 @@ void magic_pr(unsigned char *e_ident)
 }
 
 /**
- *class_pr - this function checks the class of an ELF header
- *@e_ident: A pointer to an array containing the ELF class
- */
-
-void class_pr(unsigned char *e_ident)
-{
-	printf(" Class: ");
-	switch (e_ident[EI_CLASS])
-	{
-		case ELFCLASSNONE:
-			printf("none\n");
-			break;
-		case ELFCLASS32:
-			printf("ELF32\n");
-			break;
-		case ELFCLASS64:
-			printf("ELF64\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
-	}
-}
-
-
-/**
- *data_p - the data of an ELF header
- *@e_ident: A pointer to an array containing the elf class
- */
-void data_p(unsigned char *e_ident)
-{
-	printf(" Data: ");
-	switch (e_ident[EI_DATA])
-	{
-		case ELFDATANONE:
-			printf("none\n");
-			break;
-		case ELFDATA2LSB:
-			printf("2's complement, little endian\n");
-			break;
-		case ELFDATA2MSB:
-			printf("2's complement, big endian\n");
-			break;
-		default:
-			printf("<unknown: %x>\n", e_ident[EI_CLASS]);
-	}
-}
-
-
-/**
  *version_p- Prints the version of elf header
  *@e_ident: A pointer to an array containing elF version
  */
@@ -148,15 +123,13 @@ void version_p(unsigned char *e_ident)
 	switch (e_ident[EI_VERSION])
 	{
 		case EV_CURRENT:
-			printf(" (current)\n");		
+			printf(" (current)\n");
 			break;
 		default:
 			printf("\n");
 			break;
 	}
 }
-
-
 /**
  *osabi_p - Prints the OS/ABI of an ELF header.
  *@e_ident: A pointer to an array containing the ELF version.
